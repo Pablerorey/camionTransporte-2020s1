@@ -1,0 +1,24 @@
+import camion2.*
+import cosas2.*
+ 
+test "consecuenciasDeLaCarga" {
+  camion.cargarCosas([knightRider, bumblebee, paqueteDeLadrillos, arenaAGranel, bateriaAntiaerea, residuosRadioactivos, embalajeDeSeguridad])
+
+  assert.that(not bumblebee.transformadoEnAuto())
+  assert.equals(12, paqueteDeLadrillos.cargados())
+  assert.equals(20, arenaAGranel.peso())
+  assert.that(bateriaAntiaerea.estaArmada())
+  assert.equals(15, residuosRadioactivos.peso())
+}
+
+test "ContenedorPortuario"{
+	contenedorPortuario.cargar(bumblebee)
+    contenedorPortuario.cargar(paqueteDeLadrillos)
+	
+	camion.cargar(contenedorPortuario)
+	
+	assert.that(not bumblebee.transformadoEnAuto())
+    assert.equals(12, paqueteDeLadrillos.cargados())
+	
+	
+}

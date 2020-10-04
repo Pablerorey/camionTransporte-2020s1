@@ -1,10 +1,16 @@
-import cosas.*
+import cosas2.*
 
 object camion {
 	const property cosas = []
 	
 	method cargar(unaCosa) {
 		cosas.add(unaCosa)
+		unaCosa.cambio()
+	}
+	
+	method cargarCosas(cosass){
+		cosas.addAll(cosass)
+		cosas.forEach({c=>c.cambio()})
 	}
 	
 	method descargarCosa(unaCosa) {
@@ -54,4 +60,9 @@ object camion {
 	method pesos() {
 		return cosas.map({cosa=>cosa.peso()})
 	}
+	
+	method totalBultos() {
+		return cosas.map({carga => carga.bulto()}).asSet().sum()
+	}
 }
+
